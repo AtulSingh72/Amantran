@@ -27,6 +27,7 @@ public class MainActivity4 extends AppCompatActivity {
 
     LinearLayout proceed;
     EditText guestname;
+    EditText guestplace;
     String type;
     String user_id;
     String guest_id;
@@ -37,6 +38,7 @@ public class MainActivity4 extends AppCompatActivity {
         setContentView(R.layout.activity_main4);
         proceed = (LinearLayout) findViewById(R.id.proceed);
         guestname = (EditText) findViewById(R.id.guestname);
+        guestplace = (EditText) findViewById(R.id.guestplace);
         if(getIntent().getStringExtra("edit").equals("false")) {
             // new guest entry
             user_id = getIntent().getStringExtra("id");
@@ -58,6 +60,7 @@ public class MainActivity4 extends AppCompatActivity {
             type = getIntent().getStringExtra("type");
             guest_id = getIntent().getStringExtra("guestid");
             guestname.setText(getIntent().getStringExtra("guestname"));
+            guestplace.setText(getIntent().getStringExtra("guestplace"));
 
             Button save = new Button(MainActivity4.this);
             save.setText("Save");
@@ -80,6 +83,7 @@ public class MainActivity4 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             String name = guestname.getText().toString();
+            String place = guestplace.getText().toString();
             String url = "http://192.168.1.5:8000/" + type + "/" + user_id;
             RequestQueue requestQueue = Volley.newRequestQueue(MainActivity4.this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -101,6 +105,7 @@ public class MainActivity4 extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
                     params.put("name", name);
+                    params.put("place", place);
                     return params;
                 }
 
@@ -119,6 +124,7 @@ public class MainActivity4 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             String name = guestname.getText().toString();
+            String place = guestplace.getText().toString();
             String url = "http://192.168.1.5:8000/" + user_id + "/" + type + "/" + guest_id;
             RequestQueue requestQueue = Volley.newRequestQueue(MainActivity4.this);
             StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
@@ -140,6 +146,7 @@ public class MainActivity4 extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
                     params.put("name", name);
+                    params.put("place", place);
                     return params;
                 }
 

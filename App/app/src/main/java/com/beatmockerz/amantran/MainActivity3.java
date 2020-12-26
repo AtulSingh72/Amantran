@@ -66,12 +66,19 @@ public class MainActivity3 extends AppCompatActivity {
                         JSONArray jsonArray = obj.getJSONArray("friends");
                         String guest_list[] = new String[jsonArray.length()];
                         String guest_id[] = new String[jsonArray.length()];
+                        String guest_place[] = new String[jsonArray.length()];
                         for(int i=0; i<jsonArray.length(); i++) {
                             JSONObject new_obj = new JSONObject(jsonArray.getString(i));
                             guest_list[i] = new_obj.getString("name");
                             guest_id[i] = new_obj.getString("_id");
+                            if(new_obj.has("place")) {
+                                guest_place[i] = new_obj.getString("place");
+                            }
+                            else {
+                                guest_place[i] = "";
+                            }
                         }
-                        ArrayAdapter adapter = new ArrayAdapter<String>(MainActivity3.this, android.R.layout.simple_list_item_1, guest_list);
+                        CustomAdapterClass adapter = new CustomAdapterClass(MainActivity3.this, guest_list, guest_place);
                         list.setAdapter(adapter);
                         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
@@ -82,6 +89,7 @@ public class MainActivity3 extends AppCompatActivity {
                                 intent.putExtra("id", user_id);
                                 intent.putExtra("guestid", guest_id[position]);
                                 intent.putExtra("guestname", guest_list[position]);
+                                intent.putExtra("guestplace", guest_place[position]);
                                 startActivity(intent);
                                 finish();
                             }
@@ -122,12 +130,19 @@ public class MainActivity3 extends AppCompatActivity {
                         JSONArray jsonArray = obj.getJSONArray("family");
                         String guest_list[] = new String[jsonArray.length()];
                         String guest_id[] = new String[jsonArray.length()];
+                        String guest_place[] = new String[jsonArray.length()];
                         for(int i=0; i<jsonArray.length(); i++) {
                             JSONObject new_obj = new JSONObject(jsonArray.getString(i));
                             guest_list[i] = new_obj.getString("name");
                             guest_id[i] = new_obj.getString("_id");
+                            if(new_obj.has("place")) {
+                                guest_place[i] = new_obj.getString("place");
+                            }
+                            else {
+                                guest_place[i] = "";
+                            }
                         }
-                        ArrayAdapter adapter = new ArrayAdapter<String>(MainActivity3.this, android.R.layout.simple_list_item_1, guest_list);
+                        CustomAdapterClass adapter = new CustomAdapterClass(MainActivity3.this, guest_list, guest_place);
                         list.setAdapter(adapter);
                         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
@@ -138,6 +153,7 @@ public class MainActivity3 extends AppCompatActivity {
                                 intent.putExtra("id", user_id);
                                 intent.putExtra("guestid", guest_id[position]);
                                 intent.putExtra("guestname", guest_list[position]);
+                                intent.putExtra("guestplace", guest_place[position]);
                                 startActivity(intent);
                                 finish();
                             }
