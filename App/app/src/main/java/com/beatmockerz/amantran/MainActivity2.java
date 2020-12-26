@@ -1,6 +1,8 @@
 package com.beatmockerz.amantran;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.android.volley.Request;
@@ -116,5 +118,18 @@ public class MainActivity2 extends AppCompatActivity {
         intent.putExtra("id", user_id);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        SharedPreferences sharedPreferences = getSharedPreferences("Amantran", Context.MODE_PRIVATE);
+        String owner_id = sharedPreferences.getString("name", "-1");
+        if(!owner_id.equals(user_id)) {
+            Intent intent = new Intent(MainActivity2.this, MainActivity2.class);
+            intent.putExtra("id", owner_id);
+            startActivity(intent);
+            finish();
+        }
     }
 }

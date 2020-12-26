@@ -118,7 +118,39 @@ public class MainActivity4 extends AppCompatActivity {
     View.OnClickListener edit_click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            String name = guestname.getText().toString();
+            String url = "http://192.168.1.5:8000/" + user_id + "/" + type + "/" + guest_id;
+            RequestQueue requestQueue = Volley.newRequestQueue(MainActivity4.this);
+            StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Intent intent = new Intent(MainActivity4.this, MainActivity3.class);
+                    intent.putExtra("type", type);
+                    intent.putExtra("id", user_id);
+                    startActivity(intent);
+                    finish();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("PUT Response", error.toString());
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("name", name);
+                    return params;
+                }
 
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Content-type", "application/x-www-form-urlencoded");
+                    return headers;
+                }
+            };
+            requestQueue.add(stringRequest);
         }
     };
 
@@ -145,4 +177,14 @@ public class MainActivity4 extends AppCompatActivity {
             requestQueue.add(stringRequest);
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(MainActivity4.this, MainActivity3.class);
+        intent.putExtra("type", type);
+        intent.putExtra("id", user_id);
+        startActivity(intent);
+        finish();
+    }
 }

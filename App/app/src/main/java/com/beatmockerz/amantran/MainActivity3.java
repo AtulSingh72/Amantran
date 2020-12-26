@@ -31,6 +31,7 @@ public class MainActivity3 extends AppCompatActivity {
     TextView text;
     ListView list;
     FloatingActionButton fab;
+    String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class MainActivity3 extends AppCompatActivity {
 
         if(getIntent().getStringExtra("type").equals("friends")) {
             text.setText("Friends List");
-            String user_id = getIntent().getStringExtra("id");
+            user_id = getIntent().getStringExtra("id");
             String url = "http://192.168.1.5:8000/friends/" + user_id;
             RequestQueue requestQueue = Volley.newRequestQueue(MainActivity3.this);
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -99,7 +100,7 @@ public class MainActivity3 extends AppCompatActivity {
         }
         else {
             text.setText("Family List");
-            String user_id = getIntent().getStringExtra("id");
+            user_id = getIntent().getStringExtra("id");
             String url = "http://192.168.1.5:8000/family/" + user_id;
             RequestQueue requestQueue = Volley.newRequestQueue(MainActivity3.this);
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -153,5 +154,14 @@ public class MainActivity3 extends AppCompatActivity {
             });
             requestQueue.add(stringRequest);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(MainActivity3.this, MainActivity2.class);
+        intent.putExtra("id", user_id);
+        startActivity(intent);
+        finish();
     }
 }
