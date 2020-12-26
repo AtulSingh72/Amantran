@@ -4,7 +4,8 @@ var express = require("express"),
     mongoose = require("mongoose"),
     bodyParser = require("body-parser"),
     session = require("express-session"),
-    List = require("./models/List");
+    List = require("./models/List"),
+    Guest = require("./models/Guest");
 mongoose.connect(
     "mongodb+srv://atulas72:mybdayon0204@cluster0.17haa.mongodb.net/amantran?retryWrites=true&w=majority",
     { useUnifiedTopology: false, useNewUrlParser: true }
@@ -40,28 +41,33 @@ app.get("/name", function (req, res) {
 
 app.post("/friends/:id", function (req, res) {
     List.findById(req.params.id, function (err, list) {
-        if (err) res.json({ status: 200 });
+        if (err) res.json({ status: 404 });
         else {
-            list.friends.push(req.body.entry);
-            list.save();
-            res.json({ status: 200 });
+            Guest.create(req.body, function (err, guest) {
+                list.friends.push(guest);
+                list.save();
+                res.json({ status: 200 });
+            });
         }
     });
 });
 
 app.post("/family/:id", function (req, res) {
     List.findById(req.params.id, function (err, list) {
-        if (err) res.json({ status: 200 });
+        if (err) res.json({ status: 404 });
         else {
-            list.family.push(req.body.entry);
-            list.save();
-            res.json({ status: 200 });
+            Guest.create(req.body, function (err, guest) {
+                list.family.push(guest);
+                list.save();
+                res.json({ status: 200 });
+            });
         }
     });
 });
 
 app.get("/family/:id", function (req, res) {
-    List.findById(req.params.id, function (err, list) {
+    var list_o = List.findById(req.params.id);
+    list_o.populate("family").exec(function (err, list) {
         if (err) res.json({ status: 404 });
         else {
             res.json({ family: list.family });
@@ -70,12 +76,77 @@ app.get("/family/:id", function (req, res) {
 });
 
 app.get("/friends/:id", function (req, res) {
-    List.findById(req.params.id, function (err, list) {
+    var list_o = List.findById(req.params.id);
+    list_o.populate("friends").exec(function (err, list) {
         if (err) res.json({ status: 404 });
         else {
             res.json({ friends: list.friends });
         }
     });
+});
+
+app.delete("/:id1/friends/:id2", function (req, res) {
+    List.findById(req.params.id1, function (err, list) {
+        if (err) res.json({ status: 404 });
+        Guest.findById(req.params.id2, function (err, guest) {
+            if (err) res.json({ status: 404 });
+            var len = list.friends.length;
+            for (var i = 0; i < len; i++) {
+                if (
+                    list.friends[i]._id.toString() == req.params.id2.toString()
+                ) {
+                    list.friends.splice(i, 1);
+                    break;
+                }
+            }
+            list.save();
+            guest.remove();
+            res.json({ status: 200 });
+        });
+    });
+});
+
+app.delete("/:id1/family/:id2", function (req, res) {
+    List.findById(req.params.id1, function (err, list) {
+        if (err) res.json({ status: 404 });
+        Guest.findById(req.params.id2, function (err, guest) {
+            if (err) res.json({ status: 404 });
+            var len = list.family.length;
+            for (var i = 0; i < len; i++) {
+                if (
+                    list.family[i]._id.toString() == req.params.id2.toString()
+                ) {
+                    list.family.splice(i, 1);
+                    break;
+                }
+            }
+            list.save();
+            guest.remove();
+            res.json({ status: 200 });
+        });
+    });
+});
+
+app.put("/:id1/family/:id2", function (req, res) {
+    Guest.findByIdAndUpdate(
+        req.params.id2,
+        { name: req.body.name, place: req.body.place },
+        function (err, guest) {
+            if (err) res.json({ status: 404 });
+            else res.json({ status: 200 });
+        }
+    );
+});
+
+app.put("/:id1/friends/:id2", function (req, res) {
+    Guest.findByIdAndUpdate(
+        req.params.id2,
+        { name: req.body.name, place: req.body.place },
+        function (err, guest) {
+            if (err) res.json({ status: 404 });
+            else res.json({ status: 200 });
+        }
+    );
 });
 
 app.get("/userlist", function (req, res) {
