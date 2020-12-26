@@ -26,41 +26,6 @@
 <!--                    android:layout_marginLeft="10dp"-->
 <!--                    android:layout_marginRight="10dp"-->
 <!--                    android:text="Person"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:layout_marginLeft="10dp"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:text="Person"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:layout_marginLeft="10dp"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:text="Person"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:layout_marginLeft="10dp"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:text="Person"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:layout_marginLeft="10dp"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:text="Person"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:layout_marginLeft="10dp"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:text="Person"/>-->
             </LinearLayout>
         </HorizontalScrollView>
         <RelativeLayout
@@ -87,14 +52,18 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center"
-                    android:text="Family"/>
+                    android:text="Family"
+                    android:onClick="familyClick"
+                    android:id="@+id/family"/>
                 <Button
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center"
-                    android:text="Friends"/>
+                    android:text="Friends"
+                    android:onClick="friendsClick"
+                    android:id="@+id/friends"/>
             </LinearLayout>
 
         </RelativeLayout>

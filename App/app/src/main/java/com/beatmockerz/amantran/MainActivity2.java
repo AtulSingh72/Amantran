@@ -101,4 +101,20 @@ public class MainActivity2 extends AppCompatActivity {
             finish();
         }
     };
+
+    public void familyClick(View view) {
+        Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+        intent.putExtra("type", "family");
+        intent.putExtra("id", user_id);
+        startActivity(intent);
+        finish();
+    }
+
+    public void friendsClick(View view) {
+        Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+        intent.putExtra("type", "friends");
+        intent.putExtra("id", user_id);
+        startActivity(intent);
+        finish();
+    }
 }
