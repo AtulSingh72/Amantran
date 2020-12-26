@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -71,6 +72,19 @@ public class MainActivity3 extends AppCompatActivity {
                         }
                         ArrayAdapter adapter = new ArrayAdapter<String>(MainActivity3.this, android.R.layout.simple_list_item_1, guest_list);
                         list.setAdapter(adapter);
+                        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                Intent intent = new Intent(MainActivity3.this, MainActivity4.class);
+                                intent.putExtra("edit", "true");
+                                intent.putExtra("type", "friends");
+                                intent.putExtra("id", user_id);
+                                intent.putExtra("guestid", guest_id[position]);
+                                intent.putExtra("guestname", guest_list[position]);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -114,6 +128,19 @@ public class MainActivity3 extends AppCompatActivity {
                         }
                         ArrayAdapter adapter = new ArrayAdapter<String>(MainActivity3.this, android.R.layout.simple_list_item_1, guest_list);
                         list.setAdapter(adapter);
+                        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                Intent intent = new Intent(MainActivity3.this, MainActivity4.class);
+                                intent.putExtra("edit", "true");
+                                intent.putExtra("type", "family");
+                                intent.putExtra("id", user_id);
+                                intent.putExtra("guestid", guest_id[position]);
+                                intent.putExtra("guestname", guest_list[position]);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
