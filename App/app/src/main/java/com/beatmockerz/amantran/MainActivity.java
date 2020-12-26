@@ -3,6 +3,7 @@ package com.beatmockerz.amantran;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,7 +38,13 @@ public class MainActivity extends AppCompatActivity {
         name = (EditText) findViewById(R.id.name);
         submit = (Button) findViewById(R.id.submit);
         sharedPreferences = getSharedPreferences("Amantran", Context.MODE_PRIVATE);
-
+        String person_found = sharedPreferences.getString("name", "-1");
+        if(!person_found.equals("-1")) {
+            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+            intent.putExtra("id", person_found);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void submitName(View view) throws JSONException {
@@ -49,8 +56,14 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     JSONObject obj = new JSONObject(response);
-                    Log.i("ID", obj.getString("id"));
-
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("name", obj.getString("id"));
+                    editor.commit();
+                    Log.i("Name ID", obj.getString("id"));
+                    Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                    intent.putExtra("id", obj.getString("id"));
+                    startActivity(intent);
+                    finish();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
