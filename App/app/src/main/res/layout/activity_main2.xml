@@ -1,43 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/bhagwa">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:backgroundTint="@color/bhagwa">
 
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".40">
+            android:layout_weight=".30"
+            android:background="@color/bhagwa"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:id="@+id/other_list">
+                android:id="@+id/other_list"
+                android:background="@color/bhagwa">
 <!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="100dp"-->
 <!--                    android:layout_gravity="center_vertical"-->
 <!--                    android:layout_marginLeft="10dp"-->
 <!--                    android:layout_marginRight="10dp"-->
-<!--                    android:text="Person"/>-->
+<!--                    android:text="Person" />-->
             </LinearLayout>
         </HorizontalScrollView>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".60">
+            android:layout_weight=".70"
+            android:background="@drawable/layout_bg">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Searching.."
-                android:textSize="24dp"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bold"
                 android:id="@+id/userName"/>
 
             <LinearLayout
@@ -46,16 +57,21 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 >
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center"
                     android:text="Family"
+                    android:textColor="@color/white"
                     android:onClick="familyClick"
-                    android:id="@+id/family"/>
-                <Button
+                    android:id="@+id/family"
+                    android:backgroundTint="@color/bhagwa"
+                    android:fontFamily="@font/semibold"
+                    android:textSize="18dp"
+                    app:cornerRadius="20dp"/>
+                <com.google.android.material.button.MaterialButton
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginLeft="10dp"
@@ -63,7 +79,13 @@
                     android:layout_gravity="center"
                     android:text="Friends"
                     android:onClick="friendsClick"
-                    android:id="@+id/friends"/>
+                    android:id="@+id/friends"
+                    android:backgroundTint="@color/bhagwa"
+                    android:backgroundTintMode="add"
+                    android:fontFamily="@font/semibold"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    app:cornerRadius="20dp"/>
             </LinearLayout>
 
         </RelativeLayout>

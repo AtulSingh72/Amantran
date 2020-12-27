@@ -1,8 +1,11 @@
 package com.beatmockerz.amantran;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import com.android.volley.Request;
@@ -11,13 +14,17 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -48,6 +55,7 @@ public class MainActivity2 extends AppCompatActivity {
         String url = "http://192.168.1.5:8000/userlist";
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity2.this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onResponse(String response) {
                 try {
@@ -67,15 +75,23 @@ public class MainActivity2 extends AppCompatActivity {
                     other_list = (LinearLayout) findViewById(R.id.other_list);
                     for(int i = 0; i < other_users.size(); i++)
                     {
-                        Button btn = new Button(MainActivity2.this);
+                        MaterialButton btn = new MaterialButton(MainActivity2.this);
                         btn.setText(other_users.get(i));
                         btn.setId(i);
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 120, getResources().getDisplayMetrics());
+                        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 120, getResources().getDisplayMetrics());
+                        int radius = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics());
+                        btn.setBackgroundTintList(ContextCompat.getColorStateList(MainActivity2.this, R.color.bg_dark));
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width, height);
                         params.leftMargin = 10;
                         params.rightMargin = 10;
                         params.gravity = Gravity.CENTER_VERTICAL;
                         btn.setLayoutParams(params);
                         btn.setOnClickListener(other_click);
+                        btn.setTextColor(Color.parseColor("#FFFFFF"));
+                        Typeface font = ResourcesCompat.getFont(MainActivity2.this, R.font.semibold);
+                        btn.setTypeface(font);
+                        btn.setCornerRadius(radius);
                         other_list.addView(btn);
                     }
 

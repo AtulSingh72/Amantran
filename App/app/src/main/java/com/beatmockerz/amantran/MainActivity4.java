@@ -1,10 +1,16 @@
 package com.beatmockerz.amantran;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,19 +46,25 @@ public class MainActivity4 extends AppCompatActivity {
         proceed = (LinearLayout) findViewById(R.id.proceed);
         guestname = (EditText) findViewById(R.id.guestname);
         guestplace = (EditText) findViewById(R.id.guestplace);
+        Typeface font = ResourcesCompat.getFont(MainActivity4.this, R.font.semibold);
         if(getIntent().getStringExtra("edit").equals("false")) {
             // new guest entry
             user_id = getIntent().getStringExtra("id");
             type = getIntent().getStringExtra("type");
 
-            Button save = new Button(MainActivity4.this);
+            MaterialButton save = new MaterialButton(MainActivity4.this);
             save.setText("Save");
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.leftMargin = 10;
-            params.rightMargin = 10;
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             params.gravity = Gravity.CENTER;
             save.setLayoutParams(params);
             save.setOnClickListener(save_click);
+            save.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
+            save.setTextColor(Color.parseColor("#FFFFFF"));
+            save.setTypeface(font);
+            save.setBackgroundTintList(ContextCompat.getColorStateList(MainActivity4.this, R.color.bhagwa));
+            save.setCornerRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 28, getResources().getDisplayMetrics()));
+            int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
+            save.setPadding(0, padding, 0, padding);
             proceed.addView(save);
         }
         else {
@@ -62,18 +75,32 @@ public class MainActivity4 extends AppCompatActivity {
             guestname.setText(getIntent().getStringExtra("guestname"));
             guestplace.setText(getIntent().getStringExtra("guestplace"));
 
-            Button save = new Button(MainActivity4.this);
+            MaterialButton save = new MaterialButton(MainActivity4.this);
             save.setText("Save");
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0.5f);
             params.leftMargin = 10;
             params.rightMargin = 10;
             params.gravity = Gravity.CENTER;
             save.setLayoutParams(params);
             save.setOnClickListener(edit_click);
-            Button delete = new Button(MainActivity4.this);
+            MaterialButton delete = new MaterialButton(MainActivity4.this);
             delete.setText("Delete");
             delete.setLayoutParams(params);
             delete.setOnClickListener(delete_click);
+            save.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
+            delete.setTextColor(Color.parseColor("#FFFFFF"));
+            delete.setTypeface(font);
+            save.setTextColor(Color.parseColor("#FFFFFF"));
+            save.setTypeface(font);
+            delete.setBackgroundTintList(ContextCompat.getColorStateList(MainActivity4.this, R.color.bhagwa));
+            delete.setCornerRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 28, getResources().getDisplayMetrics()));
+            save.setBackgroundTintList(ContextCompat.getColorStateList(MainActivity4.this, R.color.bhagwa));
+            save.setCornerRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 28, getResources().getDisplayMetrics()));
+            int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
+            save.setPadding(0, padding, 0, padding);
+            delete.setPadding(0, padding, 0, padding);
+            delete.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
+
             proceed.addView(delete);
             proceed.addView(save);
         }

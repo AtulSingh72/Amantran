@@ -4,24 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/bg_dark">
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Enter your name"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="submitName"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ganesh"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.6">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter your name"
+                app:counterTextColor="@color/bhagwa"
+                android:textColorHint="@color/bhagwa"
+                app:boxStrokeColor="@color/bhagwa"
+                app:counterOverflowTextColor="@color/bhagwa"
+                app:boxBackgroundColor="@color/bg_dark"
+                app:hintTextColor="@color/bhagwa">
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:inputType="textCapWords"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    android:fontFamily="@font/semibold"
+                    android:textColor="@color/bhagwa"
+                    android:textSize="20dp"
+                    android:drawableLeft="@drawable/user_3"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!--            <Button-->
+<!--                android:id="@+id/submit"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Submit"-->
+<!--                android:layout_marginRight="25dp"-->
+<!--                android:layout_marginLeft="25dp"-->
+<!--                android:layout_marginBottom="30dp"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="submitName"-->
+<!--                android:backgroundTint="@color/bhagwa"-->
+<!--                android:textSize="18dp"-->
+<!--                android:paddingBottom="15dp"-->
+<!--                android:paddingTop="15dp"-->
+<!--                android:fontFamily="@font/semibold"-->
+<!--                android:textColor="@color/white"/>-->
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:onClick="submitName"
+                android:backgroundTint="@color/bhagwa"
+                android:textSize="20dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:fontFamily="@font/semibold"
+                android:textColor="@color/white"
+                app:cornerRadius="28dp"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
 </RelativeLayout>

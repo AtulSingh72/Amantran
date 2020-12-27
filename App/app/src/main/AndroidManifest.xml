@@ -13,7 +13,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/Theme.Amantran">
-        <activity android:name=".MainActivity4"></activity>
+        <activity android:name=".MainActivity4" android:theme="@style/Theme.Amantran.NoActionBar"></activity>
         <activity
             android:name=".MainActivity3"
             android:label="@string/title_activity_main3"
@@ -21,8 +21,8 @@
         <activity
             android:name=".MainActivity2"
             android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.Amantran.NoActionBar" />
-        <activity android:name=".MainActivity">
+            android:theme="@style/Theme.Amantran.NoActionBar2" />
+        <activity android:name=".MainActivity" android:theme="@style/Theme.Amantran.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

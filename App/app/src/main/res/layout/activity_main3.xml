@@ -14,23 +14,32 @@
         android:layout_margin="@dimen/fab_margin"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:backgroundTint="@color/white"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/bhagwa">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Loading..."
-            android:textSize="24dp"
-            android:id="@+id/text"/>
+            android:textSize="30dp"
+            android:fontFamily="@font/bold"
+            android:padding="10dp"
+            android:id="@+id/text"
+            android:background="@color/bhagwa"
+            android:textColor="@color/white"/>
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/list"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/list"
+            android:background="@drawable/layout_bg"
+            android:divider="@color/bhagwa"
+            android:dividerHeight="4px"/>
     </LinearLayout>
 
 </RelativeLayout>

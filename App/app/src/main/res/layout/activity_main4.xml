@@ -1,57 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity4">
+    tools:context=".MainActivity4"
+    android:background="@color/bg_dark"
+    android:orientation="vertical"
+    android:weightSum="1">
 
-    <LinearLayout
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        android:src="@drawable/ganpati"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6">
 
-        <EditText
-            android:id="@+id/guestname"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Enter Guest Name"
-            android:layout_marginBottom="10dp"/>
-        <EditText
-            android:id="@+id/guestplace"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Enter Guest Location"
-            android:layout_marginTop="10dp"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical">
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/proceed">
-<!--        <Button-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Delete"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:layout_marginRight="10dp"-->
-<!--            android:layout_gravity="center"/>-->
-<!--        <Button-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Submit"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:layout_marginRight="10dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            />-->
-    </LinearLayout>
-</RelativeLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Guest name"
+                app:counterTextColor="@color/bhagwa"
+                android:textColorHint="@color/bhagwa"
+                app:boxStrokeColor="@color/bhagwa"
+                app:counterOverflowTextColor="@color/bhagwa"
+                app:boxBackgroundColor="@color/bg_dark"
+                app:hintTextColor="@color/bhagwa">
+
+                <EditText
+                    android:id="@+id/guestname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:inputType="textCapWords"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    android:fontFamily="@font/semibold"
+                    android:textColor="@color/bhagwa"
+                    android:textSize="20dp"
+                    android:drawableLeft="@drawable/user_3"
+                    android:layout_marginBottom="10dp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Guest Location"
+                app:counterTextColor="@color/bhagwa"
+                android:textColorHint="@color/bhagwa"
+                app:boxStrokeColor="@color/bhagwa"
+                app:counterOverflowTextColor="@color/bhagwa"
+                app:boxBackgroundColor="@color/bg_dark"
+                app:hintTextColor="@color/bhagwa">
+
+                <EditText
+                    android:id="@+id/guestplace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:inputType="textCapWords"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    android:fontFamily="@font/semibold"
+                    android:textColor="@color/bhagwa"
+                    android:textSize="20dp"
+                    android:drawableLeft="@drawable/marker"
+                    android:layout_marginBottom="10dp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/proceed"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:weightSum="1">
+            <!--        <Button-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:text="Delete"-->
+            <!--            android:layout_marginLeft="10dp"-->
+            <!--            android:layout_marginRight="10dp"-->
+            <!--            android:layout_gravity="center"/>-->
+            <!--        <Button-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:text="Submit"-->
+            <!--            android:layout_marginLeft="10dp"-->
+            <!--            android:layout_marginRight="10dp"-->
+            <!--            android:layout_gravity="center"-->
+            <!--            />-->
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>
