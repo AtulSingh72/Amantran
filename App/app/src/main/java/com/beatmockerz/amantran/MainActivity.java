@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         submit.setClickable(false);
         String person_name = name.getText().toString();
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-        String url = "http://192.168.1.5:8000/name";
+        String url = "https://amantran.herokuapp.com/name";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

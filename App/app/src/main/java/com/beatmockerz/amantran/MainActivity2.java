@@ -52,7 +52,7 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         user_id = getIntent().getStringExtra("id");
-        String url = "http://192.168.1.5:8000/userlist";
+        String url = "https://amantran.herokuapp.com/userlist";
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity2.this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @SuppressLint("ResourceAsColor")

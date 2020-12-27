@@ -45,7 +45,7 @@ public class MainActivity3 extends AppCompatActivity {
         if(getIntent().getStringExtra("type").equals("friends")) {
             text.setText("Friends List");
             user_id = getIntent().getStringExtra("id");
-            String url = "http://192.168.1.5:8000/friends/" + user_id;
+            String url = "https://amantran.herokuapp.com/friends/" + user_id;
             RequestQueue requestQueue = Volley.newRequestQueue(MainActivity3.this);
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
@@ -109,7 +109,7 @@ public class MainActivity3 extends AppCompatActivity {
         else {
             text.setText("Family List");
             user_id = getIntent().getStringExtra("id");
-            String url = "http://192.168.1.5:8000/family/" + user_id;
+            String url = "https://amantran.herokuapp.com/family/" + user_id;
             RequestQueue requestQueue = Volley.newRequestQueue(MainActivity3.this);
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override

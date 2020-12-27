@@ -112,7 +112,7 @@ public class MainActivity4 extends AppCompatActivity {
             v.setClickable(false);
             String name = guestname.getText().toString();
             String place = guestplace.getText().toString();
-            String url = "http://192.168.1.5:8000/" + type + "/" + user_id;
+            String url = "https://amantran.herokuapp.com/" + type + "/" + user_id;
             RequestQueue requestQueue = Volley.newRequestQueue(MainActivity4.this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
@@ -155,7 +155,7 @@ public class MainActivity4 extends AppCompatActivity {
             v.setClickable(false);
             String name = guestname.getText().toString();
             String place = guestplace.getText().toString();
-            String url = "http://192.168.1.5:8000/" + user_id + "/" + type + "/" + guest_id;
+            String url = "https://amantran.herokuapp.com/" + user_id + "/" + type + "/" + guest_id;
             RequestQueue requestQueue = Volley.newRequestQueue(MainActivity4.this);
             StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
                 @Override
@@ -196,7 +196,7 @@ public class MainActivity4 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             v.setClickable(false);
-            String url = "http://192.168.1.5:8000/" + user_id + "/" + type + "/" + guest_id;
+            String url = "https://amantran.herokuapp.com/" + user_id + "/" + type + "/" + guest_id;
             RequestQueue requestQueue = Volley.newRequestQueue(MainActivity4.this);
             StringRequest stringRequest = new StringRequest(Request.Method.DELETE, url, new Response.Listener<String>() {
                 @Override
