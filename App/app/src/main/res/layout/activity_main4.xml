@@ -51,7 +51,8 @@
                     android:textColor="@color/bhagwa"
                     android:textSize="20dp"
                     android:drawableLeft="@drawable/user_3"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:textCursorDrawable="@drawable/cursor_edittext"/>
 
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -79,7 +80,8 @@
                     android:textColor="@color/bhagwa"
                     android:textSize="20dp"
                     android:drawableLeft="@drawable/marker"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:textCursorDrawable="@drawable/cursor_edittext"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -109,6 +109,7 @@ public class MainActivity4 extends AppCompatActivity {
     View.OnClickListener save_click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            v.setClickable(false);
             String name = guestname.getText().toString();
             String place = guestplace.getText().toString();
             String url = "http://192.168.1.5:8000/" + type + "/" + user_id;
@@ -119,6 +120,7 @@ public class MainActivity4 extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity4.this, MainActivity3.class);
                     intent.putExtra("type", type);
                     intent.putExtra("id", user_id);
+                    v.setClickable(true);
                     startActivity(intent);
                     finish();
                 }
@@ -150,6 +152,7 @@ public class MainActivity4 extends AppCompatActivity {
     View.OnClickListener edit_click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            v.setClickable(false);
             String name = guestname.getText().toString();
             String place = guestplace.getText().toString();
             String url = "http://192.168.1.5:8000/" + user_id + "/" + type + "/" + guest_id;
@@ -160,6 +163,7 @@ public class MainActivity4 extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity4.this, MainActivity3.class);
                     intent.putExtra("type", type);
                     intent.putExtra("id", user_id);
+                    v.setClickable(true);
                     startActivity(intent);
                     finish();
                 }
@@ -191,6 +195,7 @@ public class MainActivity4 extends AppCompatActivity {
     View.OnClickListener delete_click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            v.setClickable(false);
             String url = "http://192.168.1.5:8000/" + user_id + "/" + type + "/" + guest_id;
             RequestQueue requestQueue = Volley.newRequestQueue(MainActivity4.this);
             StringRequest stringRequest = new StringRequest(Request.Method.DELETE, url, new Response.Listener<String>() {
@@ -199,6 +204,7 @@ public class MainActivity4 extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity4.this, MainActivity3.class);
                     intent.putExtra("type", type);
                     intent.putExtra("id", user_id);
+                    v.setClickable(true);
                     startActivity(intent);
                     finish();
                 }

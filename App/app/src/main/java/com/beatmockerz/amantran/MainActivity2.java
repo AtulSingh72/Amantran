@@ -121,17 +121,21 @@ public class MainActivity2 extends AppCompatActivity {
     };
 
     public void familyClick(View view) {
+        view.setClickable(false);
         Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
         intent.putExtra("type", "family");
         intent.putExtra("id", user_id);
+        view.setClickable(true);
         startActivity(intent);
         finish();
     }
 
     public void friendsClick(View view) {
+        view.setClickable(false);
         Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
         intent.putExtra("type", "friends");
         intent.putExtra("id", user_id);
+        view.setClickable(true);
         startActivity(intent);
         finish();
     }

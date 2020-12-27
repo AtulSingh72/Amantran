@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void submitName(View view) throws JSONException {
+        submit.setClickable(false);
         String person_name = name.getText().toString();
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
         String url = "http://192.168.1.5:8000/name";
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.i("Name ID", obj.getString("id"));
                     Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                     intent.putExtra("id", obj.getString("id"));
+                    submit.setClickable(true);
                     startActivity(intent);
                     finish();
                 } catch (JSONException e) {
