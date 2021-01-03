@@ -38,6 +38,8 @@ public class MainActivity4 extends AppCompatActivity {
     String type;
     String user_id;
     String guest_id;
+    MaterialButton save;
+    MaterialButton delete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class MainActivity4 extends AppCompatActivity {
             user_id = getIntent().getStringExtra("id");
             type = getIntent().getStringExtra("type");
 
-            MaterialButton save = new MaterialButton(MainActivity4.this);
+            save = new MaterialButton(MainActivity4.this);
             save.setText("Save");
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             params.gravity = Gravity.CENTER;
@@ -75,7 +77,7 @@ public class MainActivity4 extends AppCompatActivity {
             guestname.setText(getIntent().getStringExtra("guestname"));
             guestplace.setText(getIntent().getStringExtra("guestplace"));
 
-            MaterialButton save = new MaterialButton(MainActivity4.this);
+            save = new MaterialButton(MainActivity4.this);
             save.setText("Save");
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0.5f);
             params.leftMargin = 10;
@@ -83,7 +85,7 @@ public class MainActivity4 extends AppCompatActivity {
             params.gravity = Gravity.CENTER;
             save.setLayoutParams(params);
             save.setOnClickListener(edit_click);
-            MaterialButton delete = new MaterialButton(MainActivity4.this);
+            delete = new MaterialButton(MainActivity4.this);
             delete.setText("Delete");
             delete.setLayoutParams(params);
             delete.setOnClickListener(delete_click);
@@ -109,7 +111,7 @@ public class MainActivity4 extends AppCompatActivity {
     View.OnClickListener save_click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            v.setClickable(false);
+            save.setClickable(false);
             String name = guestname.getText().toString();
             String place = guestplace.getText().toString();
             String url = "https://amantran.herokuapp.com/" + type + "/" + user_id;
@@ -120,7 +122,7 @@ public class MainActivity4 extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity4.this, MainActivity3.class);
                     intent.putExtra("type", type);
                     intent.putExtra("id", user_id);
-                    v.setClickable(true);
+                    save.setClickable(true);
                     startActivity(intent);
                     finish();
                 }
@@ -152,7 +154,8 @@ public class MainActivity4 extends AppCompatActivity {
     View.OnClickListener edit_click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            v.setClickable(false);
+            save.setClickable(false);
+            delete.setClickable(false);
             String name = guestname.getText().toString();
             String place = guestplace.getText().toString();
             String url = "https://amantran.herokuapp.com/" + user_id + "/" + type + "/" + guest_id;
@@ -163,7 +166,8 @@ public class MainActivity4 extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity4.this, MainActivity3.class);
                     intent.putExtra("type", type);
                     intent.putExtra("id", user_id);
-                    v.setClickable(true);
+                    save.setClickable(true);
+                    delete.setClickable(true);
                     startActivity(intent);
                     finish();
                 }
@@ -195,7 +199,8 @@ public class MainActivity4 extends AppCompatActivity {
     View.OnClickListener delete_click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            v.setClickable(false);
+            save.setClickable(false);
+            delete.setClickable(false);
             String url = "https://amantran.herokuapp.com/" + user_id + "/" + type + "/" + guest_id;
             RequestQueue requestQueue = Volley.newRequestQueue(MainActivity4.this);
             StringRequest stringRequest = new StringRequest(Request.Method.DELETE, url, new Response.Listener<String>() {
@@ -204,7 +209,8 @@ public class MainActivity4 extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity4.this, MainActivity3.class);
                     intent.putExtra("type", type);
                     intent.putExtra("id", user_id);
-                    v.setClickable(true);
+                    save.setClickable(true);
+                    delete.setClickable(true);
                     startActivity(intent);
                     finish();
                 }
