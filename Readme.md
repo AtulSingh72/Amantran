@@ -1,12 +1,12 @@
 <p align="center">
   <a href="" rel="noopener">
- <img src=""https://github.com/AtulSingh72/Amantran/blob/master/images/image1.jpg"" alt="Images"></a>
+ <img src="https://github.com/AtulSingh72/Amantran/blob/master/images/image1.jpg" alt="Images"></a>
   <a href="" rel="noopener">
- <img src=""https://github.com/AtulSingh72/Amantran/blob/master/images/image3.jpg"" alt="Images"></a>
+ <img src="https://github.com/AtulSingh72/Amantran/blob/master/images/image3.jpg" alt="Images"></a>
   <a href="" rel="noopener">
- <img src=""https://github.com/AtulSingh72/Amantran/blob/master/images/image2.jpg"" alt="Images"></a>
+ <img src="https://github.com/AtulSingh72/Amantran/blob/master/images/image2.jpg" alt="Images"></a>
   <a href="" rel="noopener">
- <img src=""https://github.com/AtulSingh72/Amantran/blob/master/images/image4.jpg"" alt="Images"></a>
+ <img src="https://github.com/AtulSingh72/Amantran/blob/master/images/image4.jpg" alt="Images"></a>
 </p>
 
 <h3 align="center">Amantran</h3>
