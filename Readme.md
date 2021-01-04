@@ -22,7 +22,7 @@
 - [About](#about)
 - [How it's made](#howtouse)
 - [Usage](#usage)
-- [Technology Used](#tech)  
+- [Built Using](#tech)  
 
 ## 🧐 About <a name = "about"></a>
 
@@ -48,7 +48,7 @@ Using the app is fairly simple and intuitive. Below are the detailed steps for t
 3. Clicking on Friends or Family will present you with a list of Guests entered and you also get an option to add or remove the Guests.
 4. You can also add, edit or delete the Guest from the lists.
 
-## ⛏️ Built Using <a name = "built_using"></a>
+## ⛏️ Built Using <a name = "tech"></a>
 
 - [MongoDB](https://www.mongodb.com/) - Database
 - [Express](https://expressjs.com/) - Server Framework
